@@ -1,0 +1,154 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SKILL REFERENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ ── ATK ────────────────────────────────────────────────────────
+  1  Quick Burst    3 shots fwd  │ 5 dmg×3  │ MP 13  │ CD 0.8s
+                   Rapid 3-shot burst. Core poke and pressure tool.
+
+  3  Forward Shot  1 shot fwd   │ 12 dmg   │ MP  8  │ CD 0.8s
+                   Single fast projectile. Simple, reliable poke.
+
+  5  Twin Shot     2 shots fwd+bkd │ 14 dmg×2 │ MP 14 │ CD 0.9s
+                   Simultaneous forward and backward fire. Cuts off retreats.
+
+ 16  Fwd Thorns    6 thorns fwd │ 4 dmg×6  │ MP 12  │ CD 0.5s
+                   Spawns 6 ground thorns ahead in sequence. Zone control.
+
+ 39  Homing        1 homing shot │ 8 dmg   │ MP 16  │ CD 8.0s
+                   Tracks the enemy. Slow but near-unavoidable.
+
+ 40  Smash         Melee arc fwd │ 13 dmg  │ MP 16  │ CD 1.1s
+                   Wide frontal melee swing. Best close-range coverage.
+
+ 41  Thrust        Melee stab fwd │ 14 dmg │ MP 16  │ CD 1.3s
+                   Narrow forward stab. Longer reach, higher damage than Smash.
+
+ 58  Charge Shot   1 shot fwd (charged) │ 8–20 dmg │ MP 14 │ CD 2.2s
+                   Hold to charge up to 0.8s. Damage and size scale with charge.
+                   Locks movement while charging.
+
+ 60  Arc Short     1 arc shot   │ 8 dmg    │ MP 16  │ CD 0.6s
+                   Steep parabolic projectile. Hits at close–mid range.
+                   Gravity scale ×1.2 — drops quickly.
+
+ 61  Quick Stab    Melee stab fwd │ 6 dmg  │ MP  8  │ CD 0.3s
+                   Ultra-fast jab. No knockback — chain repeatedly to press in.
+
+ 62  Arc Long      1 arc shot   │ 8 dmg    │ MP 16  │ CD 0.6s
+                   Shallow parabolic projectile. Reaches far before landing.
+                   Gravity scale ×0.8 — long hang time.
+
+ 64  Arc Reverse   1 arc shot   │ 8 dmg    │ MP 16  │ CD 0.6s
+                   Reverse parabola — curves upward then arcs back down.
+                   Unique angle; hits opponents from below.
+
+ ── UTY ────────────────────────────────────────────────────────
+ 14  Fwd Dash      Dash forward  │ —        │ MP  8  │ CD 0.8s
+                   Quick forward dash. All-purpose gap closer.
+
+ 20  Dash Shot     Dash back + 3 shots fwd │ 12 dmg×3 │ MP 14 │ CD 1.0s
+                   Back-dashes then fires 3 shots forward. Retreat and punish.
+
+ 21  Bomb          Placed bomb   │ 26 dmg   │ MP  8  │ CD 0.2s  max 5
+                   2s fuse. Up to 5 active at once. Radius 100px. Field denial.
+
+ 22  Heal          Instant heal  │ +25 HP   │ MP 28  │ CD 60.0s
+                   Recover 25 HP immediately. Long cooldown — use wisely.
+
+ 23  Meteor        1 meteor      │ 6 dmg    │ MP  6  │ CD 0.6s
+                   Single enemy-tracking meteor drop.
+
+ 24  Meteor Burst  5 meteors     │ 6 dmg×5  │ MP 18  │ CD 1.2s
+                   Five consecutive tracking meteors. Heavy sustained pressure.
+
+ 25  Heavy Meteor  1 large meteor │ 12 dmg  │ MP 12  │ CD 0.8s
+                   One big tracking meteor. More damage, larger hitbox.
+
+ 30  Boomerang     Returns to caster │ 14 dmg │ MP 22 │ CD 3.8s
+                   Travels forward then returns. Can hit twice. Range 500px.
+
+ 31  Double Jump   Extra midair jump │ —     │ MP 12  │ CD 1.2s
+                   Independent second jump. Expands aerial positioning.
+
+ 59  Burst Step    Short fwd dash + landing blast │ 8 dmg │ MP 14 │ CD 2.0s
+                   Dashes ~60% of Fwd Dash distance.
+                   Explosion on landing: radius 70px. Dash with a built-in reward.
+
+ ── HIGH ───────────────────────────────────────────────────────
+  6  Twin Heavy    1 shot fwd+bkd │ 24 dmg×2 │ MP 26 │ CD 4.8s
+                   Large shot both directions simultaneously. High-value punish.
+
+  7  Heavy Shot    1 shot fwd    │ 24 dmg   │ MP 18  │ CD 4.2s
+                   Large single forward shot. Straightforward high damage.
+
+  8  Twin Mega     1 shot fwd+bkd │ 34 dmg×2 │ MP 38 │ CD 8.2s
+                   Massive shot both directions. Highest raw damage of any normal skill.
+
+  9  Heavy Burst   2 shots fwd   │ 24 dmg×2 │ MP 28 │ CD 7.2s
+                   Two large shots in sequence. Double Heavy Shot in one slot.
+
+ 11  Mega Shot     1 shot fwd    │ 34 dmg   │ MP 34  │ CD 7.8s
+                   Single massive forward shot. Highest single-hit normal damage.
+
+ ── ULT ────────────────────────────────────────────────────────
+  2  Super Burst   12 shots fwd  │ 12 dmg×12 │ MP 35 │ CD 35.0s
+                   12-shot forward barrage. Total 144 dmg if all land.
+
+  4  Twin Burst    12 shots fwd+bkd │ 12 dmg×12 │ MP 45 │ CD 40.0s
+                   12 shots in both directions. Total 288 dmg potential.
+                   Completely seals off escape routes.
+
+ 13  Giant Shot    1 huge shot fwd │ 62 dmg  │ MP 44  │ CD 30.0s
+                   Enormous high-speed projectile. One-shot threat.
+
+ 18  Radial Thorns 12-dir burst  │ 1 dmg×24 │ MP 30  │ CD 15.0s
+                   24 projectiles fired simultaneously in all directions.
+                   Spawns 55px away from caster to prevent self-overlap damage.
+
+ 26  Meteor Rain   34 meteors    │ 6 dmg×34 │ MP 54  │ CD 75.0s
+                   34 tracking meteors in sequence. Sustained aerial bombardment.
+
+ 27  Reflect       Shield 1.8s   │ —        │ MP 14  │ CD  2.0s
+                   Reflects incoming projectiles back at the sender.
+                   Hitbox is 18px wider than visual for leniency.
+
+ 28  Slow Field    AoE slow 5s   │ —        │ MP 20  │ CD 45.0s
+                   Radius 350px slow zone. Reduces enemy movement and cooldown recovery.
+
+ 29  Clone         3 clones      │ —        │ MP 25  │ CD 135.0s
+                   Spawns 3 AI clones. Each has its own HP and fires projectiles.
+
+ 35  Super Jump    High jump + burst │ 1 dmg×8 │ MP 16 │ CD 5.0s
+                   Leaps high into the air. Fires 8 small projectiles on landing.
+
+ 36  Planet        Drop + split  │ 34 dmg + 8 dmg×24 │ MP 70 │ CD 70.0s
+                   1.5s warning then drops a planet on the enemy.
+                   On impact: explodes into 24 fragments in a ring.
+
+ 38  Sanctum       Zone 15s      │ —        │ MP 20  │ CD 130.0s
+                   Creates a 500px radius zone. Cooldowns reduced inside it.
+
+ 50  Mega Heal     Instant heal  │ +50 HP   │ MP 30  │ CD 80.0s
+                   Recover 50 HP in one shot. Best sustain tool in the game.
+
+ 51  Dummy         1 dummy       │ —        │ MP 35  │ CD 35.0s
+                   Spawns a decoy with HP. Draws enemy projectiles and attention.
+
+ 52  Replica       1 replica     │ —        │ MP 80  │ CD 115.0s
+                   High-HP clone that actively fights. Best frontline bodyguard.
+
+ 53  Super Dash    Fwd dash      │ 22 dmg   │ MP 34  │ CD 10.0s
+                   High-speed forward dash that deals damage on contact. Gap close + punish.
+
+ 55  Bomb Rain     24 bombs      │ 26 dmg×24 │ MP 70 │ CD 70.0s
+                   Drops 24 bombs across the field over time. Total field denial.
+
+ 56  Confusion     Teleport ×3   │ —        │ MP 12  │ CD  0.2s  max 3
+                   Teleports to a random position. 3 charges, 15s regen per charge.
+
+ 63  Arc Burst     Multi arc fwd │ 8 dmg×N  │ MP 48  │ CD 45.0s
+                   Fires a spread of parabolic projectiles forward.
+                   Gravity scale ×1.2 — wide area parabolic coverage.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
