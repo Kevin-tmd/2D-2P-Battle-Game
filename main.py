@@ -2989,8 +2989,8 @@ class MainMenuState(State):
         for i in range(4):
             r=200+i*55;a=int(18+14*math.sin(self.t*0.7+i));s=pygame.Surface((r*2,r*2),pygame.SRCALPHA)
             c=COLORS["p1"] if i%2==0 else COLORS["p2"];pygame.draw.circle(s,(*c,a),(r,r),r);surf.blit(s,(SCREEN_W//2-r,110-r))
-        title=Fonts.r(64).render("TANG BI KEVIN",True,COLORS["white"])
-        shad=Fonts.r(64).render("TANG BI KEVIN",True,(0,0,0))
+        title=Fonts.r(64).render("TBK",True,COLORS["white"])
+        shad=Fonts.r(64).render("TBK",True,(0,0,0))
         surf.blit(shad,(SCREEN_W//2-title.get_width()//2+3,133));surf.blit(title,(SCREEN_W//2-title.get_width()//2,130))
         sub=Fonts.r(22).render("2 Player Fighting Game",True,COLORS["gray"])
         surf.blit(sub,(SCREEN_W//2-sub.get_width()//2,210))
@@ -4306,7 +4306,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.screen=pygame.display.set_mode((SCREEN_W,SCREEN_H))
-        pygame.display.set_caption("Tangbi Kevin — 2 Player Game")
+        pygame.display.set_caption("TBK — 2 Player Game")
         self.clock=pygame.time.Clock()
         self.manager=StateManager()
         self.manager.change(MainMenuState(self.manager))
