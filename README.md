@@ -31,5 +31,7 @@ pear : recover cd (10s)
 
 <img width="400" height="226" alt="record_61_1" src="https://github.com/user-attachments/assets/3e569f2c-a620-4068-a983-c962172e2e16" />
 
+<img width="400" height="224" alt="recording_61_2" src="https://github.com/user-attachments/assets/20d0bae2-0962-4a4d-9381-c21fe3a7f3e1" />
+
 ---
 
