@@ -122,7 +122,7 @@ RAW_SKILLS = [
      {"dir":-1, "post":"shot3fwd"}),
 
     (16,"Fwd Thorns",     "atk",  12, 0.5, "thorn",
-     {"dirs":[+1], "count":6, "spacing":32, "delay_each":0.05, "rise_h":20, "damage":5}),
+     {"dirs":[+1], "count":6, "spacing":32, "delay_each":0.05, "rise_h":20, "damage":4}),
     (18,"[ULT] Radial Thorns","ult", 30, 15.0, "radial_thorn",
      {"rays":12, "per_ray":2, "spread_deg":8, "speed":440, "damage":1, "size":8}),
 
@@ -133,14 +133,14 @@ RAW_SKILLS = [
     (22,"Heal",     "uty",  28, 60.0,"heal",
      {"amount":25}),
     # ── METEORS (enemy-tracking) ──
-    (23,"Meteor",         "uty",  3, 0.1, "meteor",
-     {"count":1, "burst_delay":0.15, "size":12, "speed":1100, "damage":6}),
-    (24,"Meteor Burst",      "uty",  10, 0.2, "meteor",
-     {"count":5, "burst_delay":0.15, "size":12, "speed":1100, "damage":6}),
-    (25,"Heavy Meteor",   "uty",  6, 0.2, "meteor",
-     {"count":1, "burst_delay":0.15, "size":28, "speed":1000, "damage":12}),
+    (23,"Meteor",         "uty",  6, 0.6, "meteor",
+     {"count":1, "burst_delay":0.15, "size":12, "speed":1600, "damage":6}),
+    (24,"Meteor Burst",      "uty",  18, 1.2, "meteor",
+     {"count":5, "burst_delay":0.15, "size":12, "speed":1600, "damage":6}),
+    (25,"Heavy Meteor",   "uty",  12, 0.8, "meteor",
+     {"count":1, "burst_delay":0.15, "size":28, "speed":1400, "damage":12}),
     (26,"[ULT] Meteor Rain","ult",  54, 75.0, "meteor",
-     {"count":34, "burst_delay":0.10,"size":12, "speed":1100, "damage":6}),
+     {"count":34, "burst_delay":0.10,"size":12, "speed":1200, "damage":6}),
  
     (27,"[ULT] Reflect",  "ult",  14, 2.0, "reflect",
      {"duration":1.8, "w":110, "h":110}),
@@ -201,19 +201,30 @@ RAW_SKILLS = [
     #     대시 거리는 앞대시의 약 60%. 착지 폭발: 반경 70px, 데미지 10.
     #     앞대시 대체재이자 근접 보상형 이동기.
     (59,"Burst Step",     "uty",  14, 2.0, "burst_step",
-     {"dash_speed":500, "dash_time":0.18, "blast_radius":70, "blast_damage":8}),
+     {"dash_speed":540, "dash_time":0.24, "blast_radius":70, "blast_damage":8}),
 
     # 60: Arc Shot — atk 슬롯. 포물선 궤도 투사체.
     #     발사 각도 45°(위 + 전방). 중력 영향을 받아 포물선 낙하.
     #     공중의 상대나 플랫폼 위를 간접 타격. 데미지 16.
-    (60,"Arc Shot",       "atk",  14, 0.8, "arc_shot",
-     {"size":12, "speed":640, "damage":14, "gravity_scale":0.5}),
+    (60,"Arc Short",       "atk",  16, 0.6, "arc_shot",
+     {"size":12, "speed":740, "damage":8, "gravity_scale":1.2}),
+    
+    (62,"Arc Long",       "atk", 16, 0.6, "arc_shot",
+     {"size":12, "speed":760, "damage":8, "gravity_scale":0.8}),
+    
+    (64,"Arc Reverse",       "atk", 16, 0.6, "arc_reverse",
+     {"size":12, "speed":760, "damage":8, "gravity_scale":0.8}),
+
+    (63,"[ULT] Arc Burst",       "ult",  48, 45, "arc_burst",
+     {"size":12, "speed":740, "damage":8, "gravity_scale":1.2}),
 
     # 61: Quick Stab — atk 슬롯. 극초단 전방 근접 히트박스.
     #     사거리 매우 짧지만 CD 0.35s, MP 8로 콤보 연계용.
     #     넉백 없음 → 연속 스탭으로 파고들기.
     (61,"Quick Stab",     "atk",   8, 0.3, "quick_stab",
-     {"damage":8, "range":52}),
+     {"damage":6, "range":52}),
+
+    
 
 ]
 
@@ -275,192 +286,181 @@ def pick_skills():
 # ══════════════════════════════════════════════════════
 CHARACTERS = [
 
-    # ══ 연사 압박형 ════════════════════════════════════════
+    # ══ 연사 압박형 ══
 
-    # 1. BLITZ GUNNER — 기본 연사 진입형. 퀵버스트+앞대시+헤비버스트+슈퍼버스트
-    # 앞대시로 좁히고 퀵버스트 스팸, 슈퍼버스트 12발 마무리
-    ("Blitz Gunner",    [1,  14, 9,  2],  5),
+    # 1. 앞대시 진입 후 퀵버스트 스팸, 슈퍼버스트 마무리. 기본기 완성형
+    ("Blitz Gunner",     [1,  14, 9,  2],  5),
 
-    # 2. RAPID PRESS — 포샷+대시샷+헤비버스트+슈퍼버스트
-    # 포샷 견제 → 대시샷 후퇴 3발 역기습 → 슈퍼버스트 연사 마무리. MP리젠
-    ("Rapid Press",     [3,  20, 9,  2],  0),
+    # 2. 포샷 견제 → 대시샷 역기습 3발 → 슈퍼버스트. MP리젠으로 쿨 유지
+    ("Rapid Press",      [3,  20, 9,  2],  0),
 
-    # 3. TWIN BURST — 트윈샷+앞대시+트윈헤비+트윈버스트
-    # 전후방 동시 발사, 좌우 도주 차단. 앞대시로 간격 조절
-    ("Twin Burst",      [5,  14, 6,  4],  5),
+    # 3. 트윈샷 전후방 견제 + 앞대시 간격조절 + 트윈버스트 전후 동시 마무리
+    ("Twin Burst",       [5,  14, 6,  4],  5),
 
-    # ══ 저격·단타형 ══════════════════════════════════════
+    # 4. 트윈샷 + 더블점프 공중 트윈메가 + 트윈버스트. 공중 전후방 폭딜
+    ("Twin Mega",        [5,  31, 8,  4],  4),
 
-    # 4. GLASS SNIPER — 포샷+앞대시+메가샷+자이언트샷
-    # 유리대포 + 메가샷/자이언트샷 풀차지 단타. 이속 버프로 히트앤런
-    ("Glass Sniper",    [3,  14, 11, 13], 2),
+    # ══ 저격·단타형 ══
 
-    # 5. HEAVY DIVER — 퀵버스트+앞대시+헤비버스트+자이언트샷
-    # 대시 진입 → 헤비버스트 2발 → 자이언트샷 마무리 콤보
-    ("Heavy Diver",     [1,  14, 9,  13], 5),
+    # 5. 포샷 견제 + 메가샷 확정 + 자이언트샷 풀위력. 유리대포 극딜
+    ("Glass Sniper",     [3,  14, 11, 13], 2),
 
-    # 6. CHARGE SNIPER — 차지샷+앞대시+메가샷+자이언트샷
-    # 차지샷 풀차지(28)+메가샷(34)+자이언트샷(62) 순차 폭딜. 유리대포
-    ("Charge Sniper",   [58, 14, 11, 13], 2),
+    # 6. 퀵버스트 난사 + 헤비버스트 2발 + 자이언트샷 마무리
+    ("Heavy Diver",      [1,  14, 9,  13], 5),
 
-    # 7. CHARGE BLASTER — 차지샷+버스트스텝+헤비버스트+슈퍼버스트
-    # 버스트스텝 착지폭발+차지샷 혼합. MP리젠으로 차지샷 연속 사용
-    ("Charge Blaster",  [58, 59, 9,  2],  0),
+    # 7. 차지샷 풀차지(20)+메가샷(34)+자이언트샷(62). 3단계 고데미지 연계. 유리대포
+    ("Charge Sniper",    [58, 14, 11, 13], 2),
 
-    # ══ 근접 격투형 ══════════════════════════════════════
+    # 8. 차지샷 + 버스트스텝 착지폭발 + 헤비버스트 + 슈퍼버스트. MP리젠 지속압박
+    ("Charge Blaster",   [58, 59, 9,  2],  0),
 
-    # 8. BLADE DANCER — 쓰러스트+앞대시+헤비샷+슈퍼대시
-    # 대시→쓰러스트→헤비샷 연계. 슈퍼대시 22dmg 돌진 마무리
-    ("Blade Dancer",    [41, 14, 7,  53], 5),
+    # ══ 근접 격투형 ══
 
-    # 9. SMASH LORD — 스매시+앞대시+트윈헤비+슈퍼대시
-    # 스매시 범위타 + 슈퍼대시 돌격. 근접 전투 특화
-    ("Smash Lord",      [40, 14, 6,  53], 5),
+    # 9. 앞대시 진입→쓰러스트→헤비샷 연계. 슈퍼대시 22dmg 돌진 마무리
+    ("Blade Dancer",     [41, 14, 7,  53], 5),
 
-    # 10. STAB CHAIN — 퀵스탭+버스트스텝+헤비버스트+슈퍼대시
-    # 퀵스탭(CD0.35s 넉백없음) 연속 파고들기 → 버스트스텝 착지폭발 → 슈퍼대시
-    ("Stab Chain",      [61, 59, 9,  53], 5),
+    # 10. 스매시 범위타 + 앞대시 + 트윈헤비 전후방 + 슈퍼대시 돌격
+    ("Smash Lord",       [40, 14, 6,  53], 5),
 
-    # 11. IRON FIST — 스매시+대시샷+메가샷+슈퍼대시
-    # 스매시 근접 후 대시샷 후퇴 3발. 유리대포 메가샷+슈퍼대시 극딜
-    ("Iron Fist",       [40, 20, 11, 53], 2),
+    # 11. 퀵스탭 CD0.3s 넉백없음 연속찌르기 → 버스트스텝 착지폭발 → 슈퍼대시
+    ("Stab Chain",       [61, 59, 9,  53], 5),
 
-    # 12. BERSERKER — 쓰러스트+앞대시+헤비버스트+플래닛
-    # 저주로 HP 희생 대신 공격+MP보상. 근접 후 플래닛 단기결전
-    ("Berserker",       [41, 14, 9,  36], 3),
+    # 12. 스매시 근접 → 대시샷 후퇴+3발 역기습. 유리대포 메가샷+슈퍼대시 극딜
+    ("Iron Fist",        [40, 20, 11, 53], 2),
 
-    # 13. QUICK BLADE — 퀵스탭+앞대시+트윈헤비+슈퍼대시
-    # 퀵스탭 연속 찌르기 후 트윈헤비 전후방 폭딜. 슈퍼대시 탈출겸 마무리
-    ("Quick Blade",     [61, 14, 6,  53], 4),
+    # 13. 저주 HP희생 + 쓰러스트+헤비버스트 근접공세 + 플래닛 마무리. 단기결전
+    ("Berserker",        [41, 14, 9,  36], 3),
 
-    # ══ 아크샷 활용형 ════════════════════════════════════
+    # 14. 퀵스탭 근접 + 앞대시 + 트윈헤비 전후방 + 슈퍼대시. 기동성 근접형
+    ("Quick Blade",      [61, 14, 6,  53], 4),
 
-    # 14. ARC MAGE — 아크샷+더블점프+메가샷+슬로우필드
-    # 슬로우 전개 후 공중에서 아크샷 간접타격. 더블점프로 사거리 극대화
-    ("Arc Mage",        [60, 31, 11, 28], 0),
+    # 15. 쓰러스트 + 버스트스텝 착지폭발 + 트윈메가 전후방 + 슬로우필드. 진입+제압
+    ("Thrust Control",   [41, 59, 8,  28], 0),
 
-    # 15. ARC SNIPER — 아크샷+앞대시+트윈메가+자이언트샷
-    # 아크샷으로 플랫폼 위 상대 압박, 트윈메가 전후 폭딜. 유리대포
-    ("Arc Sniper",      [60, 14, 8,  13], 2),
+    # ══ 아크샷 활용형 ══
 
-    # 16. ARC BOMBER — 아크샷+폭탄+트윈헤비+봄레인
-    # 아크샷+폭탄 선치기로 필드 제압. 봄레인 전체 초토화. 저주 단기결전
-    ("Arc Bomber",      [60, 21, 6,  55], 3),
+    # 16. 아크숏(빠른낙하)+앞대시+메가샷+슬로우필드. 슬로우 후 아크샷 간접확정타
+    ("Arc Mage",         [60, 14, 11, 28], 0),
 
-    # ══ 리플렉트 카운터형 ════════════════════════════════
+    # 17. 아크롱(완만한낙하)+더블점프+트윈메가+자이언트샷. 공중 원거리 간접폭딜. 유리대포
+    ("Arc Sniper",       [62, 31, 8,  13], 2),
 
-    # 17. REFLECT MASTER — 포샷+앞대시+메가샷+리플렉트
-    # 메가샷 유도 → 리플렉트 반사반격. 속도로 포지션 선점
-    ("Reflect Master",  [3,  14, 11, 27], 4),
+    # 18. 아크리버스(역포물선)+앞대시+트윈헤비+트윈버스트. 아래서 위로 치는 독특한 각도
+    ("Reverse Arc",      [64, 14, 6,  4],  5),
 
-    # 18. COUNTER BLADE — 쓰러스트+더블점프+헤비샷+리플렉트
-    # 근접 쓰러스트 후 리플렉트 카운터. 더블점프 공중 각도
-    ("Counter Blade",   [41, 31, 7,  27], 1),
+    # 19. 아크숏+폭탄 선치기+트윈헤비+봄레인. 폭탄+아크샷 겹치기 필드제압. 저주 단기결전
+    ("Arc Bomber",       [60, 21, 6,  55], 3),
 
-    # 19. CHARGE REFLECT — 차지샷+앞대시+트윈헤비+리플렉트
-    # 차지샷 풀차지 위협으로 리플렉트 유도. 트윈헤비 전후방 압박
-    ("Charge Reflect",  [58, 14, 6,  27], 4),
+    # 20. 아크롱+버스트스텝+헤비버스트+아크버스트. 버스트스텝 진입+아크버스트 전방위
+    ("Arc Burst Rush",   [62, 59, 9,  63], 4),
 
-    # ══ 슬로우 컨트롤형 ══════════════════════════════════
+    # 21. 아크리버스+더블점프+메가샷+슬로우필드. 역방향 포물선+슬로우 예측불가 압박
+    ("Reverse Slow",     [64, 31, 11, 28], 0),
 
-    # 20. SLOW MAGE — 퀵버스트+앞대시+메가샷+슬로우필드
-    # 슬로우 필드 전개 → 도망 불가 상태에서 메가샷 집중
-    ("Slow Mage",       [1,  14, 11, 28], 0),
+    # ══ 리플렉트 카운터형 ══
 
-    # 21. SLOW BOMBER — 호밍+폭탄+헤비버스트+슬로우필드
-    # 슬로우+폭탄 선치기+호밍 지속딜 트랩. MP리젠으로 유지
-    ("Slow Bomber",     [39, 21, 9,  28], 0),
+    # 22. 포샷+앞대시+메가샷+리플렉트. 메가샷 유도 후 리플렉트 반사반격
+    ("Reflect Master",   [3,  14, 11, 27], 4),
 
-    # 22. SLOW TWIN — 트윈샷+버스트스텝+트윈메가+슬로우필드
-    # 버스트스텝 착지폭발로 진입, 슬로우 후 트윈메가 확정타. 유리대포
-    ("Slow Twin",       [5,  59, 8,  28], 2),
+    # 23. 쓰러스트+더블점프+헤비샷+리플렉트. 근접 후 리플렉트 카운터. Tough 방어
+    ("Counter Blade",    [41, 31, 7,  27], 1),
 
-    # ══ 생존·방어형 ══════════════════════════════════════
+    # 24. 차지샷 위협+앞대시+트윈헤비+리플렉트. 차지샷 강제 반응 유도→리플렉트 역이용
+    ("Charge Reflect",   [58, 14, 6,  27], 4),
 
-    # 23. CLONE WALL — 퀵버스트+더블점프+헤비샷+클론
-    # 클론 3기 방어선 + 더블점프 공중 헤비샷 압박. Tough 방어
-    ("Clone Wall",      [1,  31, 7,  29], 1),
+    # 25. 아크롱+앞대시+트윈메가+리플렉트. 아크샷 간접+리플렉트 이중 방어선
+    ("Arc Reflect",      [62, 14, 8,  27], 1),
 
-    # 24. REPLICA FORT — 쏜+앞대시+헤비샷+레플리카
-    # 레플리카 HP150 전진배치 + 쏜 근접방어 + 헤비샷 후방딜
-    ("Replica Fort",    [16, 14, 7,  52], 1),
+    # ══ 슬로우 컨트롤형 ══
 
-    # 25. HEAL FIGHTER — 퀵버스트+힐+헤비버스트+메가힐
-    # 힐+메가힐(50hp) 자급자족 지속전. Tough로 버팀
-    ("Heal Fighter",    [1,  22, 9,  50], 1),
+    # 26. 퀵버스트+앞대시+메가샷+슬로우필드. 슬로우 후 메가샷 확정. MP리젠 유지
+    ("Slow Mage",        [1,  14, 11, 28], 0),
 
-    # 26. DUMMY GUARD — 아크샷+힐+트윈헤비+더미
-    # 더미 방어막 전개 + 아크샷 간접 압박. 힐로 HP 유지. Tough
-    ("Dummy Guard",     [60, 22, 6,  51], 1),
+    # 27. 호밍+폭탄 선치기+헤비버스트+슬로우필드. 슬로우+폭탄+호밍 트리플 트랩
+    ("Slow Bomber",      [39, 21, 9,  28], 0),
 
-    # ══ 생텀 거점형 ══════════════════════════════════════
+    # 28. 트윈샷+버스트스텝 착지+트윈메가+슬로우필드. 버스트스텝 진입→슬로우→트윈메가
+    ("Slow Twin",        [5,  59, 8,  28], 2),
 
-    # 27. SANCTUM GUNNER — 퀵버스트+앞대시+헤비버스트+생텀
-    # 생텀 안에서 CD 80% 단축. 퀵버스트+헤비버스트 스팸
-    ("Sanctum Gunner",  [1,  14, 9,  38], 0),
+    # 29. 차지샷+앞대시+헤비버스트+슬로우필드. 슬로우 후 차지샷 풀차지 확정타
+    ("Charge Slow",      [58, 14, 9,  28], 0),
 
-    # 28. SANCTUM CHARGE — 차지샷+앞대시+메가샷+생텀
-    # 생텀 안 CD 단축으로 차지샷 연속 사용. 메가샷 병행 딜링
-    ("Sanctum Charge",  [58, 14, 11, 38], 5),
+    # ══ 생존·방어형 ══
 
-    # ══ 컨퓨전 기습형 ════════════════════════════════════
+    # 30. 퀵버스트+더블점프+헤비샷+클론. 클론 3기 방어선+공중 헤비샷. Tough
+    ("Clone Wall",       [1,  31, 7,  29], 1),
 
-    # 29. GHOST STRIKER — 포샷+앞대시+헤비버스트+컨퓨전
-    # 컨퓨전 텔포 위치 혼란 → 포샷+헤비버스트 순간기습
-    ("Ghost Striker",   [3,  14, 9,  56], 4),
+    # 31. 쏜+앞대시+헤비샷+레플리카. 레플리카 HP탱킹+쏜 근접방어+헤비샷 후방딜
+    ("Replica Fort",     [16, 14, 7,  52], 1),
 
-    # 30. STAB PHANTOM — 퀵스탭+버스트스텝+메가샷+컨퓨전
-    # 텔포 후 퀵스탭 연속 찌르기 → 버스트스텝 착지폭발 → 메가샷. 유리대포
-    ("Stab Phantom",    [61, 59, 11, 56], 2),
+    # 32. 퀵버스트+힐+헤비버스트+메가힐. 힐+메가힐(50hp) 자급자족 지속전. Tough
+    ("Heal Fighter",     [1,  22, 9,  50], 1),
 
-    # 31. ARC PHANTOM — 아크샷+앞대시+트윈헤비+컨퓨전
-    # 컨퓨전으로 위치 노출 최소화하며 아크샷 간접타격. 텔포 후 트윈헤비
-    ("Arc Phantom",     [60, 14, 6,  56], 4),
+    # 33. 아크숏+힐+트윈헤비+더미. 더미 방어막+아크샷 간접압박+힐 유지. Tough
+    ("Dummy Guard",      [60, 22, 6,  51], 1),
 
-    # ══ 플래닛 마무리형 ══════════════════════════════════
+    # 34. 포샷+힐+메가샷+메가힐. 힐 사이클 돌리며 메가샷 지속딜. Tough 방어
+    ("Heal Sniper",      [3,  22, 11, 50], 1),
 
-    # 32. PLANET RUSH — 스매시+앞대시+헤비버스트+플래닛
-    # 근접전으로 HP 소모 후 플래닛 마무리. Aggressive 근딜 강화
-    ("Planet Rush",     [40, 14, 9,  36], 5),
+    # ══ 생텀 거점형 ══
 
-    # 33. PLANET MAGE — 호밍+앞대시+트윈헤비+플래닛
-    # 호밍 지속딜 축적 + 플래닛 투하. MP리젠으로 호밍 쿨 유지
-    ("Planet Mage",     [39, 14, 6,  36], 0),
+    # 35. 퀵버스트+앞대시+헤비버스트+생텀. 생텀 CD단축으로 헤비버스트 스팸
+    ("Sanctum Gunner",   [1,  14, 9,  38], 0),
 
-    # 34. CHARGE PLANET — 차지샷+앞대시+헤비버스트+플래닛
-    # 차지샷 풀차지로 HP를 깎고 플래닛 마무리. 저주로 빠른 궁극기 수렴
-    ("Charge Planet",   [58, 14, 9,  36], 3),
+    # 36. 차지샷+앞대시+메가샷+생텀. 생텀 안 CD단축으로 차지샷 연속사용+메가샷 병행
+    ("Sanctum Charge",   [58, 14, 11, 38], 5),
 
-    # ══ 라디알쏜 폭발형 ══════════════════════════════════
+    # 37. 퀵스탭+힐+헤비버스트+생텀. 생텀 CD단축 퀵스탭 루프+힐 자가회복. Tough
+    ("Stab Sanctum",     [61, 22, 9,  38], 1),
 
-    # 35. RADIAL BURST — 퀵버스트+더블점프+트윈헤비+라디알쏜
-    # 더블점프로 공중에서 라디알쏜 36발 동시 폭발. 트윈헤비 전후 마무리
-    ("Radial Burst",    [1,  31, 6,  18], 5),
+    # ══ 컨퓨전 기습형 ══
 
-    # 36. RADIAL MAGE — 아크샷+더블점프+메가샷+라디알쏜
-    # 공중 포지셔닝 후 아크샷으로 압박, 라디알쏜 중거리 전방위 폭발. MP리젠
-    ("Radial Mage",     [60, 31, 11, 18], 0),
+    # 38. 포샷+앞대시+헤비버스트+컨퓨전. 텔포 위치혼란→포샷+헤비버스트 순간기습
+    ("Ghost Striker",    [3,  14, 9,  56], 4),
 
-    # ══ 혼합·특수 전술형 ════════════════════════════════
+    # 39. 퀵스탭+버스트스텝+메가샷+컨퓨전. 텔포→퀵스탭 연속→버스트스텝→메가샷 폭딜. 유리대포
+    ("Stab Phantom",     [61, 59, 11, 56], 2),
 
-    # 37. BOOMERANG ACE — 부메랑+더블점프+헤비샷+슈퍼점프
-    # 부메랑 왕복 히트 + 슈퍼점프+더블점프 공중 기동 극대화
-    ("Boomerang Ace",   [30, 31, 7,  35], 4),
+    # 40. 아크롱+앞대시+트윈헤비+컨퓨전. 텔포로 위치 노출 최소화+아크롱 간접타격
+    ("Arc Phantom",      [62, 14, 6,  56], 4),
 
-    # 38. BOMB ZONE — 쏜+폭탄+트윈헤비+봄레인
-    # 폭탄 5개 선배치 + 쏜 접근 차단. 봄레인으로 필드 초토화. 저주 단기결전
-    ("Bomb Zone",       [16, 21, 6,  55], 3),
+    # ══ 플래닛 마무리형 ══
 
-    # 39. STEP TWIN — 트윈샷+버스트스텝+트윈헤비+트윈버스트
-    # 버스트스텝 착지폭발 진입 → 트윈샷+트윈헤비 전후방 동시 압박 → 트윈버스트
-    ("Step Twin",       [5,  59, 6,  4],  5),
+    # 41. 스매시+앞대시+헤비버스트+플래닛. 근접전 HP소모 후 플래닛 투하 마무리
+    ("Planet Rush",      [40, 14, 9,  36], 5),
 
-    # 40. STAB SANCTUM — 퀵스탭+힐+헤비버스트+생텀
-    # 생텀 CD 단축으로 퀵스탭 연속 찌르기+힐 자가회복 무한 근접루프. Tough
-    ("Stab Sanctum",    [61, 22, 9,  38], 1),
+    # 42. 호밍+앞대시+트윈헤비+플래닛. 호밍 지속딜 후 플래닛. MP리젠 유지
+    ("Planet Mage",      [39, 14, 6,  36], 0),
+
+    # 43. 차지샷+앞대시+헤비버스트+플래닛. 저주 HP희생 대신 딜+MP 보상으로 빠른 플래닛
+    ("Charge Planet",    [58, 14, 9,  36], 3),
+
+    # ══ 라디알쏜 폭발형 ══
+
+    # 44. 퀵버스트+더블점프+트윈헤비+라디알쏜. 공중에서 전방위 36발 동시폭발+트윈헤비
+    ("Radial Burst",     [1,  31, 6,  18], 5),
+
+    # 45. 아크롱+더블점프+메가샷+라디알쏜. 아크롱 공중압박+라디알쏜 중거리 전방위. MP리젠
+    ("Radial Arc",       [62, 31, 11, 18], 0),
+
+    # 46. 차지샷+앞대시+트윈헤비+라디알쏜. 차지샷 위협+라디알쏜 근접전방위. Aggressive
+    ("Radial Charge",    [58, 14, 6,  18], 5),
+
+    # ══ 혼합·특수형 ══
+
+    # 47. 부메랑+더블점프+헤비샷+슈퍼점프. 부메랑 왕복히트+슈퍼점프+더블점프 공중기동
+    ("Boomerang Ace",    [30, 31, 7,  35], 4),
+
+    # 48. 쏜+폭탄+트윈헤비+봄레인. 폭탄 5개 선치기+쏜 접근차단+봄레인 초토화. 저주 단기결전
+    ("Bomb Zone",        [16, 21, 6,  55], 3),
+
+    # 49. 트윈샷+버스트스텝+트윈헤비+트윈버스트. 버스트스텝 착지→트윈 전후방 압박→트윈버스트
+    ("Step Twin",        [5,  59, 6,  4],  5),
+
+    # 50. 아크리버스+버스트스텝+트윈메가+아크버스트. 역포물선+버스트스텝 착지폭발+아크버스트
+    ("Reverse Burst",    [64, 59, 8,  63], 4),
 
 ]
-
 
 def get_character_skills(char_idx):
     _, skill_ids, _ = CHARACTERS[char_idx]
@@ -486,9 +486,9 @@ PASSIVE_DATA = [
     #   장점: 투사체 한 방 위력 압도적 / 단점: 방어 불리 → 히트앤런 필수
     {"name":"Glass Cannon","mp_regen_mult":1.0,"hp_bonus":0,   "dmg_mult":1.35,"spd_mult":1.05,"def_mult":1.30,"curse":False,"max_mp_bonus":0},
 
-    # 3: Curse       — HP -15, MP 회복 +20%, 공격 +10% (기존 HP-20만 → 보상 강화)
+    # 3: Curse       — HP -20, MP 회복 +20%, 공격 +10% (기존 HP-20만 → 보상 강화)
     #   장점: 짧은 게임이면 MP가 넘침 + 딜 소폭↑ / 단점: 체력이 항상 부족
-    {"name":"Curse",      "mp_regen_mult":1.20,"hp_bonus":-15, "dmg_mult":1.10,"spd_mult":1.0,"def_mult":1.0, "curse":True, "max_mp_bonus":0},
+    {"name":"Curse",      "mp_regen_mult":1.20,"hp_bonus":-20, "dmg_mult":1.10,"spd_mult":1.0,"def_mult":1.0, "curse":True, "max_mp_bonus":0},
 
     # 4: Agility     — HP +10, 이동속도 +12% (기존 +10% → 조금 더 차별화)
     #   장점: 포지셔닝 유리, 회피 쉬움 / 단점: 딜/방어 보너스 없음
@@ -1901,16 +1901,66 @@ class Player:
             facing = self.facing
             sz    = p["size"]; spd  = p["speed"]; dmg = dmg_mod(p["damage"])
             gs    = p["gravity_scale"]
-            # 45° upward + forward velocity; gravity_scale stored on projectile via subclass trick
-            vx_a  = facing * spd * 0.45   # cos(63°)
-            vy_a  = -spd * 0.89           # sin(63°)
-            def fire_arc(px=self.x+facing*22, py=self.y-self.H//2,
-                         vx=vx_a, vy=vy_a, s=sz, d=dmg, g=gs):
-                proj = Projectile(px, py, vx, vy, s, d, self.id)
-                proj._arc_gravity = g   # consumed in ArcShot update path
-                proj._is_arc = True
-                world.projectiles.append(proj)
-            self._queue(0, fire_arc)
+            for x in range(0,5):
+                arc_delay = x*0.15
+                # 45° upward + forward velocity; gravity_scale stored on projectile via subclass trick
+                vx_a  = facing * spd * 0.45 +0.15*x   # cos(63°)
+                vy_a  = -spd * 0.89 +0.15*x          # sin(63°)
+                def fire_arc(px=self.x+facing*22, py=self.y-self.H//2,
+                                vx=vx_a, vy=vy_a, s=sz, d=dmg, g=gs):
+                    proj = Projectile(px, py, vx, vy, s, d, self.id)
+                    proj._arc_gravity = g   # consumed in ArcShot update path
+                    proj._is_arc = True
+                    world.projectiles.append(proj)
+                self._queue(arc_delay, fire_arc)
+        
+        elif t=="arc_reverse":
+            facing = self.facing
+            sz    = p["size"]; spd  = p["speed"]; dmg = dmg_mod(p["damage"])
+            gs    = p["gravity_scale"]
+            for x in range(0,5):
+                arc_delay = x*0.15
+                # 45° upward + forward velocity; gravity_scale stored on projectile via subclass trick
+                vx_a  = -1 * facing * spd * 0.45 +0.15*x   # cos(63°)
+                vy_a  = -spd * 0.89 +0.15*x          # sin(63°)
+                def fire_arc(px=self.x+facing*22, py=self.y-self.H//2,
+                                vx=vx_a, vy=vy_a, s=sz, d=dmg, g=gs):
+                    proj = Projectile(px, py, vx, vy, s, d, self.id)
+                    proj._arc_gravity = g   # consumed in ArcShot update path
+                    proj._is_arc = True
+                    world.projectiles.append(proj)
+                self._queue(arc_delay, fire_arc)
+        
+        elif t=="arc_burst":
+            facing = self.facing
+            sz    = p["size"]; spd  = p["speed"]; dmg = dmg_mod(p["damage"])
+            gs    = p["gravity_scale"]
+            arc_delay = 0
+            for x in range(0,15):
+                arc_delay += random.randint(5,25)*0.01
+                # 45° upward + forward velocity; gravity_scale stored on projectile via subclass trick
+                vx_a  = facing * spd * 0.40 +0.20*x   # cos(63°)
+                vy_a  = -spd * 0.89 +0.15*x          # sin(63°)
+                def fire_arc(px=self.x+facing*22, py=self.y-self.H//2,
+                                vx=vx_a, vy=vy_a, s=sz, d=dmg, g=gs):
+                    proj = Projectile(px, py, vx, vy, s, d, self.id)
+                    proj._arc_gravity = g   # consumed in ArcShot update path
+                    proj._is_arc = True
+                    world.projectiles.append(proj)
+                self._queue(arc_delay, fire_arc)
+            arc_delay = 0
+            for x in range(0,15):
+                arc_delay += random.randint(5,25)*0.01
+                # 45° upward + forward velocity; gravity_scale stored on projectile via subclass trick
+                vx_a  = -1 * facing * spd * 0.45 +0.15*x   # cos(63°)
+                vy_a  = -spd * 0.89 +0.15*x          # sin(63°)
+                def fire_arc(px=self.x+facing*22, py=self.y-self.H//2,
+                                vx=vx_a, vy=vy_a, s=sz, d=dmg, g=gs):
+                    proj = Projectile(px, py, vx, vy, s, d, self.id)
+                    proj._arc_gravity = g   # consumed in ArcShot update path
+                    proj._is_arc = True
+                    world.projectiles.append(proj)
+                self._queue(arc_delay, fire_arc)
 
         elif t=="quick_stab":
             dmg   = dmg_mod(p["damage"])
