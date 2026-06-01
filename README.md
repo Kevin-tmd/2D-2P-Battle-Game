@@ -1,4 +1,4 @@
-#Quick Start
+# Quick Start
 ```bash
 pip install pygame
 ```
