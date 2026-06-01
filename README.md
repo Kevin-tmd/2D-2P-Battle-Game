@@ -19,6 +19,8 @@ Curse : hp -20, mp + 20%, atk +10%, CURSE*
 Agility : hp + 10%, spd +12%
 Aggressive : atk +20%, hp +10
 
+#### Skill descriptions written on Skill_List
+
 #### Items
 apple : recover hp (15)
 banana : recover mp (50)
