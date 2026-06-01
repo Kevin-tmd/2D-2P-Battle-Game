@@ -3,27 +3,27 @@
 pip install pygame
 ```
 #### Player1
-move: a | d | w
+move: a | d | w\
 skills: x | c | v | b
 
 #### Player2
-move: ← | → | ↑
+move: ← | → | ↑\
 skills: m | , | . | /
 
 #### Passives
-MP Regen : mp regen +30%
-Tough : def + 20%, hp +5%
-Glass Cannon : atk + 35%, def -30%
-Curse : hp -20, mp + 20%, atk +10%, CURSE*
-(*CURSE : shoots 5 meteors when attacked)
-Agility : hp + 10%, spd +12%
+MP Regen : mp regen +30%\
+Tough : def + 20%, hp +5%\
+Glass Cannon : atk + 35%, def -30%\
+Curse : hp -20, mp + 20%, atk +10%, CURSE*\
+(*CURSE : shoots 5 meteors when attacked)\
+Agility : hp + 10%, spd +12%\
 Aggressive : atk +20%, hp +10
 
 #### Skill descriptions written on Skill_List
 
 #### Items
-apple : recover hp (15)
-banana : recover mp (50)
+apple : recover hp (15)\
+banana : recover mp (50)\
 pear : recover cd (10s)
 
 ---
